@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de compras</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/index.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <span class="logo">
+            <img src="assets/imgs/logo.svg" alt="logo">
+        </span>
+    </header>
+
+    <main>
+        <form action="#">
+            <a href="#">
+                voltar
+            </a>
+
+            <fieldset>
+                <legend>
+                    compras da semana
+                </legend>
+
+                <div class="input-wrapper">
+                    <input type="text" required placeholder="Adicione um novo item" id="item">
+                    <button type="button" id="button">
+                        Adicionar item
+                    </button>
+                </div>
+
+                <ul role="list" id="list">
+                    
+                </ul>
+            </fieldset>
+
+            <div class="information">
+                <div>
+                    <img src="assets/imgs/warning-circle-filled.svg" alt="">
+                    O item foi removido da lista
+                </div>
+
+                <div id="close">
+                    <img src="assets/imgs/delete-small.svg" alt="">
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
