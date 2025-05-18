@@ -2,7 +2,7 @@
   const nameItem = document.querySelector("#item");
   const btn = document.querySelector("button");
   const list = document.querySelector("#list");
-  
+
   function createTag(tagName, className) {
     const element = document.createElement(tagName);
     if (className) {
@@ -25,57 +25,88 @@
     const actions = createTag("div", "actions");
     const del = createTag("div");
     del.setAttribute("id", "del");
+    del.setAttribute("data-action", "iDel");
     actions.appendChild(del);
     li.appendChild(actions);
 
     return li;
   }
 
-  //vetor para armazenamento dos itens
-  const shoppingList = [
+  const listItems = [
     {
-      nameItem: 'teste',
-      create: new Date(),
+      name: "teste",
       completed: false,
+      create: new Date(),
     },
     {
-      nameItem: 'teste 2',
-      create: new Date(),
+      name: "teste 2",
       completed: false,
+      create: new Date(),
     },
   ];
 
-  //função para renderizar os itens na tela
-
   function renderLi() {
     list.textContent = "";
-    shoppingList.forEach((item) => {
-      list.appendChild(createLi(item.nameItem));
+    listItems.forEach((item) => {
+      list.appendChild(createLi(item.name));
     });
   }
 
   renderLi();
 
-
-  //função para adicionar items a lista de compras
-
   function addItem() {
     if (nameItem.value) {
-      shoppingList.push({
-        nameItem: nameItem.value,
-        create: new Date(),
+      listItems.push({
+        name: nameItem.value,
         completed: false,
+        create: new Date(),
       });
       renderLi()
     } else {
-      nameItem.focus();
+      nameItem.focus()
     }
   }
+
+  const close = document.querySelector('#close')
+
+  close.addEventListener('click', function () {
+    const inform = document.querySelector('.information')
+      inform.style.display = 'none'
+  })
+
+  function clickUl(e) {
+    const dataAction = e.target.getAttribute('data-action')
+
+
+    if (!dataAction) return;
+
+    let currentLi = e.target
+
+    while (currentLi.nodeName !== "LI") {
+      currentLi = currentLi.parentElement;
+    }
+
   
-  function del() {
+    const lis = [...document.querySelectorAll('li')]
+
+    const index = lis.indexOf(currentLi)
+
+    const actions = {
+      iDel: function() {
+        listItems.splice(index, 1)
+        const inform = document.querySelector('.information')
+        inform.style.display = 'flex'
+        renderLi()
+      }
+    }
+
+    if(actions[dataAction]) {
+      actions[dataAction]()
+    }
+
     
   }
 
-   btn.onclick = addItem;
-  
+  list.addEventListener("click", clickUl);
+  btn.addEventListener('click', addItem)
 })();

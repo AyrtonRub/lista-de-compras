@@ -106,6 +106,7 @@ form {
         color: var(--always-white);
         font-weight: 600;
         margin-top: 2.5rem;
+        display: none;
 
         & div:nth-of-type(1) {
             display: flex;
